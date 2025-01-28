@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS dataset (
+   id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+   title VARCHAR(255) NOT NULL,
+   description VARCHAR(2000) NOT NULL,
+   json_sample JSON(10000) NOT NULL,
+   json_result JSON(1000000) NOT NULL,
+   submission_date DATE
+);

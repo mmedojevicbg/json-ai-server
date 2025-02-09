@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Loader2 } from "lucide-react";
 import { Eye, FileJson } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface Dataset {
   id: string;
@@ -11,6 +12,7 @@ interface Dataset {
 }
 
 const List = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState<Dataset[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -88,6 +90,11 @@ const List = () => {
                     <a
                       href={""}
                       className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:text-blue-700"
+                      onClick={() => {
+                        navigate("/details", {
+                          state: item,
+                        });
+                      }}
                     >
                       <Eye className="w-4 h-4" />
                       <span>View Details</span>

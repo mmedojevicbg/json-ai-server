@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ListPage from "./pages/List";
 import Menu from "./Menu";
 import Add from "./pages/Add";
+import DetailView from "./pages/DetailsView";
 
 const App: React.FC = () => {
   return (
@@ -23,6 +24,7 @@ const App: React.FC = () => {
               <Route path="/" element={<div className="p-4">Home Page</div>} />
               <Route path="/list" element={<ListPage />} />
               <Route path="/add" element={<Add />} />
+              <Route path="/details" element={<DetailView />} />
             </Routes>
           </div>
         </main>

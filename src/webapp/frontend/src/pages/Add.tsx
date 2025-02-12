@@ -1,4 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
+import CodeEditor from "@uiw/react-textarea-code-editor";
+import rehypePrism from "rehype-prism-plus";
 
 interface FormData {
   title: string;
@@ -103,14 +105,23 @@ const Add: React.FC = () => {
             >
               JSON Sample
             </label>
-            <textarea
+            <CodeEditor
               id="jsonSample"
               name="jsonSample"
+              minHeight={150}
               value={formData.jsonSample}
+              language="json"
+              placeholder="Please enter JSON sample."
               onChange={handleChange}
-              required
-              rows={6}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border font-mono"
+              rehypePlugins={[
+                [rehypePrism, { ignoreMissing: true, showLineNumbers: true }],
+              ]}
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border"
+              style={{
+                backgroundColor: "#ffffff",
+                fontFamily:
+                  "ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace",
+              }}
             />
           </div>
 

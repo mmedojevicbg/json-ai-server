@@ -1,6 +1,8 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import CodeEditor from "@uiw/react-textarea-code-editor";
 import rehypePrism from "rehype-prism-plus";
+import { Loader2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface FormData {
   title: string;
@@ -9,12 +11,23 @@ interface FormData {
 }
 
 const Add: React.FC = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<FormData>({
     title: "",
     description: "",
     jsonSample: "",
   });
   const [status, setStatus] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const Loader = () => (
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-10">
+      <div className="bg-white p-4 rounded-lg flex items-center gap-2">
+        <Loader2 className="animate-spin" />
+        <span>Loading...</span>
+      </div>
+    </div>
+  );
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -27,6 +40,7 @@ const Add: React.FC = () => {
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    setLoading(true);
     e.preventDefault();
     setStatus("Submitting...");
 
@@ -42,21 +56,25 @@ const Add: React.FC = () => {
       if (response.ok) {
         setStatus("Submission successful!");
         setFormData({ title: "", description: "", jsonSample: "" });
+        navigate("/list");
       } else {
         setStatus("Submission failed. Please try again.");
       }
+      setLoading(false);
     } catch (error) {
       setStatus(
         error instanceof Error
           ? error.message
           : "An error occurred while submitting data"
       );
+      setLoading(false);
     }
   };
 
   return (
     <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow">
+        {loading && <Loader />}
         <h1 className="text-2xl font-bold mb-8 text-gray-900">
           Submit Dataset
         </h1>
@@ -121,6 +139,7 @@ const Add: React.FC = () => {
                 backgroundColor: "#ffffff",
                 fontFamily:
                   "ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace",
+                zIndex: 1,
               }}
             />
           </div>

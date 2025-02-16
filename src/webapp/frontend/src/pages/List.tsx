@@ -104,7 +104,10 @@ const List = () => {
                     </a>
 
                     <a
-                      href={`/api/dataset/json/${item.id}`}
+                      href={
+                        (import.meta.env.VITE_API_BASE_URL ?? "") +
+                        `/api/dataset/json/${item.id}`
+                      }
                       className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-600 hover:text-gray-700"
                     >
                       <FileJson className="w-4 h-4" />

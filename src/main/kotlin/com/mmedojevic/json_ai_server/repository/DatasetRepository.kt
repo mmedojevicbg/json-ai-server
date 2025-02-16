@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface DatasetRepository: JpaRepository<Dataset, Int>  {
+    fun findAllByOrderByIdDesc() : List<Dataset>
 }

@@ -30,11 +30,11 @@ class DatasetService(val datasetRepository: DatasetRepository, val aiService: Ai
         prompt += "Single JSON node is in following format: \n"
         prompt += dataset.jsonSample + "\n\n"
         prompt += "Return only JSON without any additional text"
-        return aiService.executePrompt(prompt);
+        return aiService.executePrompt(prompt)
     }
 
     fun getDatasetDefinitions() : List<Dataset> {
-        return datasetRepository.findAll()
+        return datasetRepository.findAllByOrderByIdDesc()
     }
 
     fun getDatasetGeneratedJson(id: Int): String {

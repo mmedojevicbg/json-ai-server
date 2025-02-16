@@ -3,7 +3,7 @@ import React from "react";
 const Home: React.FC = () => {
   return (
     <>
-      <div className="flex flex-col bg-gray-100 py-20">
+      <div className="flex flex-col bg-white p-6 rounded-lg shadow">
         <div className="text-center px-4 py-8">
           <div className="flex justify-center">
             <img src="/logo.svg" style={{ width: "200px" }} />

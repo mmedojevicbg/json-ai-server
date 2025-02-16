@@ -68,7 +68,7 @@ const List = () => {
   }
 
   return (
-    <div className="p-4">
+    <div className="bg-white p-6 rounded-lg shadow">
       <h2 className="text-2xl font-bold mb-4">Dataset List</h2>
       <div className="overflow-x-auto">
         <table className="w-full border-collapse">
@@ -104,7 +104,7 @@ const List = () => {
                     </a>
 
                     <a
-                      href={`http://localhost:40000/api/dataset/json/${item.id}`}
+                      href={`/api/dataset/json/${item.id}`}
                       className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-600 hover:text-gray-700"
                     >
                       <FileJson className="w-4 h-4" />

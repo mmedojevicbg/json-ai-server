@@ -25,7 +25,10 @@ const List = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:40000/api/dataset");
+        const response = await fetch(
+          (import.meta.env.VITE_API_BASE_URL ?? window.location.origin) +
+            "/api/dataset"
+        );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

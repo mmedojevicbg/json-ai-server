@@ -45,13 +45,17 @@ const Add: React.FC = () => {
     setStatus("Submitting...");
 
     try {
-      const response = await fetch("http://localhost:40000/api/dataset", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        (import.meta.env.VITE_API_BASE_URL ?? window.location.origin) +
+          "/api/dataset",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (response.ok) {
         setStatus("Submission successful!");

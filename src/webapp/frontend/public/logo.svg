@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+    <!-- Background -->
+    <rect width="200" height="200" fill="transparent" rx="20"/>
+
+    <!-- Curly braces representing JSON -->
+    <path d="M50 40 C40 40 35 50 35 60 L35 80 C35 90 30 95 20 95 C30 95 35 100 35 110 L35 130 C35 140 40 150 50 150"
+          fill="none" stroke="#2563eb" stroke-width="8" stroke-linecap="round"/>
+    <path d="M150 40 C160 40 165 50 165 60 L165 80 C165 90 170 95 180 95 C170 95 165 100 165 110 L165 130 C165 140 160 150 150 150"
+          fill="none" stroke="#2563eb" stroke-width="8" stroke-linecap="round"/>
+
+    <!-- AI text -->
+    <text x="100" y="115" font-family="Arial, sans-serif" font-size="72" font-weight="bold" text-anchor="middle" fill="#1e40af">AI</text>
+    
+</svg>

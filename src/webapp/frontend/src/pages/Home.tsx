@@ -6,7 +6,7 @@ const Home: React.FC = () => {
       <div className="flex flex-col bg-gray-100 py-20">
         <div className="text-center px-4 py-8">
           <div className="flex justify-center">
-            <img className="justify-center" src="./public/logo.png" />
+            <img src="/logo.svg" style={{ width: "200px" }} />
           </div>
           <div className="py-8">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">

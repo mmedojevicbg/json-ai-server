@@ -17,7 +17,7 @@ const Menu: React.FC = () => {
             onClick={() => {
               navigate(item.link);
             }}
-            className={`px-3 py-2 rounded-md bg-blue-700`}
+            className={`px-3 py-2 rounded-md bg-blue-700 cursor-pointer`}
           >
             {item.label}
           </button>

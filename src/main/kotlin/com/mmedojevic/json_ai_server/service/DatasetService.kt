@@ -44,4 +44,8 @@ class DatasetService(val datasetRepository: DatasetRepository, val aiService: Ai
     fun getDataset(id: Int): Dataset {
         return datasetRepository.findById(id).orElseThrow { EntityNotFoundException("Entity not found with id: $id") }
     }
+
+    fun deleteDataset(id: Int) {
+        datasetRepository.deleteById(id);
+    }
 }

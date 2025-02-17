@@ -5,6 +5,7 @@ import com.mmedojevic.json_ai_server.model.entity.Dataset
 import com.mmedojevic.json_ai_server.service.DatasetService
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.CrossOrigin
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -33,5 +34,10 @@ class DatasetController(val datasetService: DatasetService) {
     @GetMapping(path = ["/json/{id}"], produces = [MediaType.APPLICATION_JSON_VALUE])
     fun getDatasetJson(@PathVariable id: Int): String {
         return datasetService.getDatasetGeneratedJson(id)
+    }
+
+    @DeleteMapping(path = ["/{id}"])
+    fun deleteDataset(@PathVariable id: Int) {
+        datasetService.deleteDataset(id)
     }
 }

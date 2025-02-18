@@ -11,11 +11,12 @@ A Spring Boot application built with Kotlin that serves AI-generated JSON data, 
 - Configurable data generation patterns
 - Lightweight and easy to set up
 - Suitable for local development and testing environments
+- Embedded React application
 
 ## Prerequisites
 
 - JDK 21 or later
-- Claude API key
+- Claude or OpenAI API key
 
 
 ## Configuration
@@ -54,6 +55,48 @@ GET /api/dataset
 ```
 GET /api/dataset/json/{id}
 ```
+
+## Docker
+
+Create a file named docker-compose.yml with the following content:
+
+    services:
+        jsonaiserver:
+            image: 'mmedojevicbg/json-ai-server:latest'
+            container_name: jsonaiserver
+            environment:
+                - 'CLAUDE_API_KEY=claude-api-key'
+                - 'AI_MODEL=claude'
+                - 'H2_FILE_STORAGE=/var/lib/h2/data'
+            ports:
+                - '15000:40000'
+            volumes:
+                - jsonaiserver_data:/var/lib/h2/data
+    volumes:
+        jsonaiserver_data:
+
+To use Claude, set the AI_MODEL environment variable to claude and provide your Claude API key in the CLAUDE_API_KEY environment variable. For OpenAI, set AI_MODEL to openai and provide your OpenAI API key in the OPENAI_API_KEY environment variable.
+
+Once the application starts, access it at http://localhost:15000.
+
+## Frontend
+
+### Homepage 
+
+![Homepage](https://mmedojevic.com/wp-content/uploads/2025/02/json-ai-server-home.jpg)
+
+### Add dataset
+
+![Homepage](https://mmedojevic.com/wp-content/uploads/2025/02/json-ai-server-add.jpg)
+
+### List
+
+![Homepage](https://mmedojevic.com/wp-content/uploads/2025/02/json-ai-server-list-full.jpg)
+
+### JSON Endpoint
+
+![Homepage](https://mmedojevic.com/wp-content/uploads/2025/02/json-ai-server-json.jpg)
+
 
 ## License
 

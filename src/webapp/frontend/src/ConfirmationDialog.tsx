@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from "react";
 
-type ButtonVariant = 'danger' | 'warning' | 'primary';
+type ButtonVariant = "danger" | "warning" | "primary";
 
 interface ButtonVariantStyles {
   [key: string]: string;
@@ -25,35 +25,35 @@ const ConfirmationDialog: React.FC<ConfirmationDialogProps> = ({
   description = "This action cannot be undone.",
   cancelText = "Cancel",
   confirmText = "Confirm",
-  variant = "danger"
+  variant = "danger",
 }) => {
   // Handle ESC key press
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') onClose();
+      if (event.key === "Escape") onClose();
     };
-    window.addEventListener('keydown', handleEsc);
-    return () => window.removeEventListener('keydown', handleEsc);
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
   }, [onClose]);
 
   // Prevent body scroll when dialog is open
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [isOpen]);
 
   if (!isOpen) return null;
 
   const buttonVariants: ButtonVariantStyles = {
-    danger: 'bg-red-500 hover:bg-red-600',
-    warning: 'bg-yellow-500 hover:bg-yellow-600',
-    primary: 'bg-blue-500 hover:bg-blue-600'
+    danger: "bg-red-500 hover:bg-red-600",
+    warning: "bg-yellow-500 hover:bg-yellow-600",
+    primary: "bg-blue-500 hover:bg-blue-600",
   };
 
   return (
@@ -84,10 +84,7 @@ const ConfirmationDialog: React.FC<ConfirmationDialogProps> = ({
                   {title}
                 </h3>
                 <div className="mt-2">
-                  <p
-                    id="dialog-description"
-                    className="text-sm text-gray-500"
-                  >
+                  <p id="dialog-description" className="text-sm text-gray-500">
                     {description}
                   </p>
                 </div>

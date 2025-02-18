@@ -23,7 +23,9 @@ A Spring Boot application built with Kotlin that serves AI-generated JSON data, 
 
 ### Environment variables
 
-Define `CLAUDE_API_KEY` environment variable before startging the application.
+- `AI_MODEL` claude or openai
+- `CLAUDE_API_KEY` put Claude API key if claude model is selected
+- `OPENAI_API_KEY` put OpenAI API key if openai model is selected
 
 ## API Endpoints
 

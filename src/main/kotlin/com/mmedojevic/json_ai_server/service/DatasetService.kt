@@ -3,7 +3,6 @@ package com.mmedojevic.json_ai_server.service
 import com.mmedojevic.json_ai_server.model.entity.Dataset
 import com.mmedojevic.json_ai_server.repository.DatasetRepository
 import jakarta.persistence.EntityNotFoundException
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException
 import org.springframework.stereotype.Service
 import java.util.Date
 
